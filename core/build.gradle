@@ -27,6 +27,10 @@ dependencies {
 	//mybatis
 	compile('org.mybatis:mybatis:3.4.5')	
 	
+	// https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+	compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.1'
+	
+	
 	//apache common
 	compile('commons-io:commons-io:2.6')
 	compile('org.apache.commons:commons-collections4:4.1')

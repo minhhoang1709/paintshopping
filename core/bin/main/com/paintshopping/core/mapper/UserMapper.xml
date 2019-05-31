@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paintshopping.core.mapper.UserMapper">
 <resultMap id="BaseResultMap"  type="com.paintshopping.model.UserModel" >
-	<id column="user_id" jdbcType="INT" property="userId" />
+	<id column="user_id" jdbcType="INTEGER" property="userId" />
 	<result column="user_name" jdbcType="VARCHAR" property="userName" />
 	<result column="user_pass" jdbcType="VARCHAR" property="userPass" />
 	<result column="user_fullname" jdbcType="VARCHAR" property="userFullname" />
@@ -17,7 +17,7 @@
 <sql id="Base_Column_List">
 	user_id, user_name, user_pass, user_fullname, user_gender, user_birthday, user_address, user_phone, user_email, user_created_date, user_updated_date
 </sql>
-<insert id="insertUser" parameterType="com.paintingshopping.model.UserModel">
+<insert id="insertUser" parameterType="com.paintshopping.model.UserModel">
 	insert into tbluser
 	<trim prefix="(" suffix=")" suffixOverrides=",">
 		<if test="userName!=null">
@@ -25,24 +25,6 @@
 		</if>
 		<if test="userPass!=null">
 			user_pass,
-		</if>
-		<if test="userFullname!=null">
-			user_fullname,
-		</if>
-		<if test="userGender!=null">
-			user_gender,
-		</if>
-		<if test="userBirthday!=null">
-			user_birthday,
-		</if>
-		<if test="userAddress!=null">
-			user_address,
-		</if>
-		<if test="userPhone!=null">
-			user_phone,
-		</if>
-		<if test="userEmail!=null">
-			user_email,
 		</if>
 		<if test="userCreatedDate!=null">
 			user_created_date,
@@ -58,41 +40,47 @@
 		<if test="userPass!=null">
 			#{userPass, jdbcType=VARCHAR},
 		</if>
-		<if test="userFullname!=null">
-			#{userFullname, jdbcType=VARCHAR},
+		<if test="true">
+			user_created_date = now(),
 		</if>
-		<if test="userGender!=null">
-			#{userGender, jdbcType=VARCHAR},
-		</if>
-		<if test="userBirthday!=null">
-			#{userBirthday, jdbcType=VARCHAR},
-		</if>
-		<if test="userAddress!=null">
-			#{userAddress, jdbcType=VARCHAR},
-		</if>
-		<if test="userPhone!=null">
-			#{userPhone, jdbcType=VARCHAR},
-		</if>
-		<if test="userEmail!=null">
-			#{userEmail, jdbcType=VARCHAR},
-		</if>
-		<if test="userCreatedDate!=null">
-			#{userCreatedDate, jdbcType=VARCHAR},
-		</if>
-		<if test="userUpdatedDate!=null">
-			#{userUpdatedDate, jdbcType=VARCHAR},
+		<if test="true">
+			user_updated_date = now(),
 		</if>
 	</trim>
 </insert>
-<update id="updateUser" parameterType="com.paintingshopping.model.UserModel">
+<update id="updateProfileWhenRegister" parameterType="com.paintshopping.model.UserModel">
 	update tbluser
 	<set>
-		<if test="userName!=null">
-			user_name = #{userName, jdbcType=VARCHAR},
+		<if test="userFullname!=null">
+			user_fullname = #{userFullname, jdbcType=VARCHAR},
 		</if>
-		<if test="userPass!=null">
-			user_pass = #{userPass, jdbcType=VARCHAR},
+		<if test="userGender!=null">
+			user_gender = #{userGender, jdbcType=VARCHAR},
 		</if>
+		<if test="userBirthday!=null">
+			user_birthday = #{userBirthday, jdbcType=VARCHAR},
+		</if>
+		<if test="userAddress!=null">
+			user_address = #{userAddress, jdbcType=VARCHAR},
+		</if>
+		<if test="userPhone!=null">
+			user_phone = #{userPhone, jdbcType=VARCHAR},
+		</if>
+		<if test="userEmail!=null">
+			user_email = #{userEmail, jdbcType=VARCHAR},
+		</if>
+		<if test="true">
+			user_created_date = now(),
+		</if>
+		<if test="true">
+			user_updated_date = now(),
+		</if>
+	</set>
+	where user_name = #{userName, jdbcType=VARCHAR}
+</update>
+<update id="updateProfile" parameterType="com.paintshopping.model.UserModel">
+	update tbluser
+	<set>
 		<if test="userFullname!=null">
 			user_fullname = #{userFullname, jdbcType=VARCHAR},
 		</if>
@@ -115,6 +103,6 @@
 			user_updated_date = now(),
 		</if>
 	</set>
-	where user_id = #{userId, jdbcType=INT}
+	where user_name = #{userName, jdbcType=VARCHAR}
 </update>
 </mapper>

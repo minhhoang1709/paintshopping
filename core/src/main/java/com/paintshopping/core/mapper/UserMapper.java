@@ -1,7 +1,9 @@
 package com.paintshopping.core.mapper;
 
-import org.apache.ibatis.annotations.*;
-
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Param;
 import com.paintshopping.model.UserModel;
 
 @Mapper
@@ -12,25 +14,40 @@ public interface UserMapper {
 		"from tbluser ",
 		"where user_email=#{user_email,jdbcType=VARCHAR}"
 	})
-	UserModel findByUserEmail(@Param("user_email") String userEmail);
+	UserModel selectByUserEmail(@Param("user_email") String userEmail);
 	
 	@Select({
 		"select ",
+		"user_id, user_name, user_pass, user_fullname, user_gender, user_birthday, user_address , user_phone, user_email, user_created_date, user_updated_date ",
+		"from tbluser ",
+		"where user_id=#{userId,jdbcType=INTEGER}"
+	})
+	UserModel selectByUserId(@Param("userId") int userEmail);
+	
+	@Select({
+		"select",
 		"user_id, user_name, user_pass, user_fullname, user_gender, user_birthday, user_address, user_phone, user_email, user_created_date, user_updated_date ",
 		"from tbluser ",
-		"where user_id=#{user_id,jdbcType=INT}"
+		"where user_name=#{userName,jdbcType=VARCHAR} and user_pass=#{userPass,jdbcType=VARCHAR}"
 	})
-	UserModel findByUserId(@Param("user_id") int userEmail);
+	UserModel selectByUserNameAndUserPass(@Param("userName") String userName, @Param("userPass") String userPass);
+	
+	int insertUser(UserModel userModel);
+	
+	@Insert({
+		"insert ",
+		"into tbluser(user_name, user_pass, user_created_date, user_updated_date) ",
+		"values(#{userName},#{userPass})"
+	})
+	int registerUser(@Param("userName") String userName, @Param("userPass") String userPass);
 	
 	@Select({
 		"select ",
-		"user_id, user_name, user_pass, user_fullname, user_gender, user_birthday, user_address, user_phone, user_email, user_created_date, user_updated_date ",
-		"from tbluser ",
-		"where user_name=#{user_name,jdbcType=VARCHAR} and user_pass=#{user_pass,jdbcType=VARCHAR}"
+		"count(*) from tbluser ",
+		"where user_name=#{userName}"
 	})
-	UserModel findByUserNameAndPassword(@Param("user_name") String userName, @Param("user_pass") String userPass);
+	int checkUserName(@Param("userName") String userName);
+	int updateProfileWhenRegister(UserModel userModel);
+	int updateProfile(UserModel userModel);
 	
-	int inserUser(UserModel userModel);
-	
-	int updateUser(UserModel userModel);
 }

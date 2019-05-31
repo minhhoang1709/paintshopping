@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--     <typeAliases> -->
+<!--         <package name="sample.mybatis.domain"/> -->
+<!--     </typeAliases> -->
+	<settings>
+  		<setting name="cacheEnabled" value="false"/>
+  		<setting name="lazyLoadingEnabled" value="true"/>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	</settings>
+  	
+  	<typeAliases>
+        <typeAlias alias="UserModel" type="com.paintshopping.model.UserModel" />
+    </typeAliases>
+  	
+  	
+  	<mappers>
+        <mapper resource="com/paintshopping/core/mapper/UserMapper.xml"/>
+    </mappers>
+  	
+<!--   	<typeHandlers> -->
+<!--         <typeHandler handler="com.ninelives.insurance.api.mybatis.typehandler.StrEnumTypeHandler" /> -->
+<!--     </typeHandlers> -->
+</configuration>

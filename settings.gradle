@@ -11,3 +11,4 @@ rootProject.name = 'paintshoppingserver'
 
 include 'common'
 include 'core'
+include 'apis'
