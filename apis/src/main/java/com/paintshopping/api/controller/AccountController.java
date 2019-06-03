@@ -26,9 +26,9 @@ public class AccountController {
 		return accountService.updateProfileWhenRegister(userDto);
 	}
 	
-	@RequestMapping(path="/profile" ,method= {RequestMethod.PUT})
-	@ResponseBody
-	public int updateProfile(UserDto userDto) {
-		return accountService.updateProfile(userDto);
-	}
+//	@RequestMapping(path="/profile" ,method= {RequestMethod.PUT})
+//	@ResponseBody
+//	public int updateProfile(UserDto userDto) {
+//		return accountService.updateProfile(userDto);
+//	}
 }

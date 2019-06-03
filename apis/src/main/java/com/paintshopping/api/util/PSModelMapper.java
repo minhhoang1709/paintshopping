@@ -16,4 +16,14 @@ public class PSModelMapper {
 		UserDto userDto = modelMapper.map(userModel, UserDto.class);
 		return userDto;
 	}
+	
+	public PaintDto convertToDto(PaintModel paintModel) {
+		PaintDto paintDto = modelMapper.map(paintModel, PaintDto.class);
+		return paintDto;
+	}
+	
+	public PaintCategoryDto convertToDto(PaintCategoryModel paintCategoryModel) {
+		PaintCategoryDto paintCategoryDto = modelMapper.map(paintCategoryModel, PaintCategoryDto.class);
+		return paintCategoryDto;
+	}
 }

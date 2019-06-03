@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paintshopping.core.mapper.PaintCategoryMapper">
+<resultMap type="com.paintshopping.model.PaintCategoryModel" id="PaintCategoryMap">
+	<id column="paint_category_id" jdbcType="INTEGER" property="paintCategoryId" />
+	<result column="paint_category_name" jdbcType="VARCHAR" property="paintCategoryName" />
+	<result column="paint_category_description" jdbcType="VARCHAR" property="paintCategoryDesciption" />
+</resultMap>
+
+<select id="selectPaintCategoryById" resultMap="PaintCategoryMap">
+	select * from tblpaintcategory where paint_category_id = #{paintCategoryId, jdbcType=INTEGER}
+</select>
+
+</mapper>

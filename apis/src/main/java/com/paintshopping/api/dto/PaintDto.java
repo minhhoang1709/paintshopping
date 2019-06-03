@@ -1,8 +1,8 @@
-package com.paintshopping.model;
+package com.paintshopping.api.dto;
 
 import com.paintshopping.ref.PaintStatus;
 
-public class PaintModel {
+public class PaintDto {
 	private int paintId;
 	private String paintName;
 	private String paintColorCode;
@@ -10,21 +10,16 @@ public class PaintModel {
 	private String paintWeight;
 	private String paintMade;
 	private int paintPrice;
-	private int paintCategoryId;
-	private PaintCategoryModel paintCategory;
-	private int paintSupplierId;
-	private String paintCreatedDate;
-	private String paintUpdatedDate;
+	private PaintCategoryDto paintCategory;
 	private int paintVisited;
 	private PaintStatus paintStatus;
-	private boolean isChecked;
-	
-	public PaintModel() {
+
+	public PaintDto() {
 	}
-	public PaintModel(int paintId, String paintName, String paintColorCode, String paintBrand, String paintWeight,
-			String paintMade, int paintPrice, int paintCategoryId, PaintCategoryModel paintCategory,
-			int paintSupplierId, String paintCreatedDate, String paintUpdatedDate, int paintVisited,
-			PaintStatus paintStatus, boolean isChecked) {
+
+	public PaintDto(int paintId, String paintName, String paintColorCode, String paintBrand, String paintWeight,
+			String paintMade, int paintPrice, PaintCategoryDto paintCategory, int paintVisited,
+			PaintStatus paintStatus) {
 		this.paintId = paintId;
 		this.paintName = paintName;
 		this.paintColorCode = paintColorCode;
@@ -32,14 +27,9 @@ public class PaintModel {
 		this.paintWeight = paintWeight;
 		this.paintMade = paintMade;
 		this.paintPrice = paintPrice;
-		this.paintCategoryId = paintCategoryId;
 		this.paintCategory = paintCategory;
-		this.paintSupplierId = paintSupplierId;
-		this.paintCreatedDate = paintCreatedDate;
-		this.paintUpdatedDate = paintUpdatedDate;
 		this.paintVisited = paintVisited;
 		this.paintStatus = paintStatus;
-		this.isChecked = isChecked;
 	}
 	
 	public int getPaintId() {
@@ -84,35 +74,11 @@ public class PaintModel {
 	public void setPaintPrice(int paintPrice) {
 		this.paintPrice = paintPrice;
 	}
-	public int getPaintCategoryId() {
-		return paintCategoryId;
-	}
-	public void setPaintCategoryId(int paintCategoryId) {
-		this.paintCategoryId = paintCategoryId;
-	}
-	public PaintCategoryModel getPaintCategory() {
+	public PaintCategoryDto getPaintCategory() {
 		return paintCategory;
 	}
-	public void setPaintCategory(PaintCategoryModel paintCategory) {
+	public void setPaintCategory(PaintCategoryDto paintCategory) {
 		this.paintCategory = paintCategory;
-	}
-	public int getPaintSupplierId() {
-		return paintSupplierId;
-	}
-	public void setPaintSupplierId(int paintSupplierId) {
-		this.paintSupplierId = paintSupplierId;
-	}
-	public String getPaintCreatedDate() {
-		return paintCreatedDate;
-	}
-	public void setPaintCreatedDate(String paintCreatedDate) {
-		this.paintCreatedDate = paintCreatedDate;
-	}
-	public String getPaintUpdatedDate() {
-		return paintUpdatedDate;
-	}
-	public void setPaintUpdatedDate(String paintUpdatedDate) {
-		this.paintUpdatedDate = paintUpdatedDate;
 	}
 	public int getPaintVisited() {
 		return paintVisited;
@@ -125,11 +91,5 @@ public class PaintModel {
 	}
 	public void setPaintStatus(PaintStatus paintStatus) {
 		this.paintStatus = paintStatus;
-	}
-	public boolean isChecked() {
-		return isChecked;
-	}
-	public void setChecked(boolean isChecked) {
-		this.isChecked = isChecked;
 	}
 }
