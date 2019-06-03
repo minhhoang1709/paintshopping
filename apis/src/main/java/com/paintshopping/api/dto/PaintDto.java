@@ -10,7 +10,7 @@ public class PaintDto {
 	private String paintWeight;
 	private String paintMade;
 	private int paintPrice;
-	private PaintCategoryDto paintCategory;
+	private int paintCategoryId;
 	private int paintVisited;
 	private PaintStatus paintStatus;
 
@@ -18,7 +18,7 @@ public class PaintDto {
 	}
 
 	public PaintDto(int paintId, String paintName, String paintColorCode, String paintBrand, String paintWeight,
-			String paintMade, int paintPrice, PaintCategoryDto paintCategory, int paintVisited,
+			String paintMade, int paintPrice, int paintCategoryId, int paintVisited,
 			PaintStatus paintStatus) {
 		this.paintId = paintId;
 		this.paintName = paintName;
@@ -27,7 +27,7 @@ public class PaintDto {
 		this.paintWeight = paintWeight;
 		this.paintMade = paintMade;
 		this.paintPrice = paintPrice;
-		this.paintCategory = paintCategory;
+		this.paintCategoryId = paintCategoryId;
 		this.paintVisited = paintVisited;
 		this.paintStatus = paintStatus;
 	}
@@ -74,11 +74,13 @@ public class PaintDto {
 	public void setPaintPrice(int paintPrice) {
 		this.paintPrice = paintPrice;
 	}
-	public PaintCategoryDto getPaintCategory() {
-		return paintCategory;
+
+	public int getPaintCategoryId() {
+		return paintCategoryId;
 	}
-	public void setPaintCategory(PaintCategoryDto paintCategory) {
-		this.paintCategory = paintCategory;
+
+	public void setPaintCategoryId(int paintCategoryId) {
+		this.paintCategoryId = paintCategoryId;
 	}
 	public int getPaintVisited() {
 		return paintVisited;

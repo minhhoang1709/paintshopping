@@ -16,19 +16,21 @@
 		<result column="paint_visited" jdbcType="INTEGER" property="paintVisited" />
 		<result column="paint_status" jdbcType="VARCHAR" property="paintStatus" />
 		<result column="paint_is_checked" jdbcType="BOOLEAN" property="isChecked" />
-		<association property="paintCategory" resultMap="PaintCategoryMap" />	
-	</resultMap>
-	<resultMap type="com.paintshopping.model.PaintCategoryModel" id="PaintCategoryMap">
-		<id column="paint_category_id" jdbcType="INTEGER" property="paintCategoryId" />
-		<result column="paint_category_name" jdbcType="VARCHAR" property="paintCategoryName" />
-		<result column="paint_category_description" jdbcType="VARCHAR" property="paintCategoryDesciption" />
+		<association property="paintCategory" javaType="com.paintshopping.model.PaintCategoryModel">
+			<id column="paint_category_id" jdbcType="INTEGER" property="paintCategoryId" />
+			<result column="paint_category_name" jdbcType="VARCHAR" property="paintCategoryName" />
+			<result column="paint_category_description" jdbcType="VARCHAR" property="paintCategoryDesciption" />
+		</association>
 	</resultMap>
 	
+	<!--  
 	<sql id="ProductJoinColumnList">
 		a.paint_id, a.paint_name, a.paint_color_code, a.paint_brand, a.paint_weight, a.paint_made, a.paint_price, a.paint_supplier_id,
 		a.paint_created_date, a.paint_updated_date, a.paint_visited, a.paint_status, a.paint_is_checked,
 		b.paint_category_id as category_id, b.paint_category_name as category_name, b.paint_category_description as category_description
 	</sql>
+	-->
+	
 	<sql id="ProductTableJoinList">
 		tblpaint a
 		left join tblpaintcategory b on b.paint_category_id = a.paint_category_id
@@ -36,9 +38,121 @@
 	
 	<select id="selectPaintById" resultMap="NestedPaintResultMap">
 		select
-			<include refid="ProductJoinColumnList" />
+			*
 		from
 			<include refid="ProductTableJoinList" />
 		where a.paint_id = #{paintId, jdbcType=INTEGER}
 	</select>
+	<insert id="insertPaint" parameterType="com.paintshopping.model.PaintModel">
+		insert into tblpaint
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="paintName!=null">
+				paint_name,
+			</if>
+			<if test="paintColorCode!=null">
+				paint_color_code,
+			</if>
+			<if test="paintBrand!=null">
+				paint_brand,
+			</if>
+			<if test="paintWeight!=null">
+				paint_weight,
+			</if>
+			<if test="paintMade!=null">
+				paint_made,
+			</if>
+			<if test="paintPrice!=null">
+				paint_price,
+			</if>
+			<if test="paintCategoryId!=null">
+				paint_category_id,
+			</if>
+			<if test="paintSupplierId!=null">
+				paint_supplier_id,
+			</if>
+			<if test="paintStatus!=null">
+				paint_status,
+			</if>
+			<if test="paintCreatedDate!=null">
+				paint_created_date,
+			</if>
+			<if test="paintUpdatedDate!=null">
+				paint_updated_date,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="paintName!=null">
+				#{paintName, jdbcType=VARCHAR},
+			</if>
+			<if test="paintColorCode!=null">
+				#{paintColorCode, jdbcType=VARCHAR},
+			</if>
+			<if test="paintBrand!=null">
+				#{paintBrand, jdbcType=VARCHAR},
+			</if>
+			<if test="paintWeight!=null">
+				#{paintWeight, jdbcType=VARCHAR},
+			</if>
+			<if test="paintMade!=null">
+				#{paintMade, jdbcType=VARCHAR},
+			</if>
+			<if test="paintPrice!=0">
+				#{paintPrice, jdbcType=INTEGER},
+			</if>
+			<if test="paintCategoryId!=0">
+				#{paintCategoryId, jdbcType=INTEGER},
+			</if>
+			<if test="paintSupplierId!=0">
+				#{paintSupplierId, jdbcType=INTEGER},
+			</if>
+			<if test="paintStatus!=null">
+				#{paintStatus, jdbcType=VARCHAR},
+			</if>
+			<if test="paintCreatedDate!=null">
+				now(),
+			</if>
+			<if test="paintUpdatedDate!=null">
+				now(),
+			</if>
+		</trim>
+	</insert>
+	<update id="updatePaint" parameterType="com.paintshopping.model.PaintModel">
+		update tblpaint
+		<set>
+			<if test="paintName!=null">
+				paint_name = #{paintName, jdbcType=VARCHAR},
+			</if>
+			<if test="paintColorCode!=null">
+				paint_color_code = #{paintColorCode, jdbcType=VARCHAR},
+			</if>
+			<if test="paintBrand!=null">
+				paint_brand = #{paintBrand, jdbcType=VARCHAR},
+			</if>
+			<if test="paintWeight!=null">
+				paint_weight = #{paintWeight, jdbcType=VARCHAR},
+			</if>
+			<if test="paintMade!=null">
+				paint_made = #{paintMade, jdbcType=VARCHAR},
+			</if>
+			<if test="paintPrice!=0">
+				paint_price = #{paintPrice, jdbcType=INTEGER},
+			</if>
+			<if test="paintCategoryId!=0">
+				paint_category_id = #{paintCategoryId, jdbcType=INTEGER},
+			</if>
+			<if test="paintSupplierId!=0">
+				paint_supplier_id = #{paintSupplierId, jdbcType=INTEGER},
+			</if>
+			<if test="paintStatus!=null">
+				paint_status = #{paintStatus, jdbcType=VARCHAR},
+			</if>
+			<if test="paintUpdatedDate!=null">
+				paint_updated_date = now(),
+			</if>
+		</set>
+		where paint_id = #{paintId, jdbcType=INTEGER}
+	</update>
+	<delete id="deletePaint">
+		delete * from tblpaint where paint_id = #{paintId, jdbcType=INTEGER}
+	</delete>
 </mapper>

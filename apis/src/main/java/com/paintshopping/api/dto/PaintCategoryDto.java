@@ -3,12 +3,10 @@ package com.paintshopping.api.dto;
 public class PaintCategoryDto {
 	private int paintCategoryId;
 	private String paintCategoryName;
-	private String paintCategoryDesciption;
 	
-	public PaintCategoryDto(int paintCategoryId, String paintCategoryName, String paintCategoryDesciption) {
+	public PaintCategoryDto(int paintCategoryId, String paintCategoryName) {
 		this.paintCategoryId = paintCategoryId;
 		this.paintCategoryName = paintCategoryName;
-		this.paintCategoryDesciption = paintCategoryDesciption;
 	}
 	
 	public PaintCategoryDto() {
@@ -25,11 +23,5 @@ public class PaintCategoryDto {
 	}
 	public void setPaintCategoryName(String paintCategoryName) {
 		this.paintCategoryName = paintCategoryName;
-	}
-	public String getPaintCategoryDesciption() {
-		return paintCategoryDesciption;
-	}
-	public void setPaintCategoryDesciption(String paintCategoryDesciption) {
-		this.paintCategoryDesciption = paintCategoryDesciption;
 	}
 }
