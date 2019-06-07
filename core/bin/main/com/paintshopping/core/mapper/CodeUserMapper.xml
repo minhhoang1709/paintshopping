@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paintshopping.core.mapper.CodeUserMapper">
+	<resultMap type="com.paintshopping.model.CodeUserModel" id="CodeUserResultMap">
+		<id column="code_user_id" jdbcType="INTEGER" property="codeUserId" />
+		<result column="code_type" jdbcType="VARCHAR" property="codeType" />
+		<result column="code_id" jdbcType="INTEGER" property="codeId" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+		<result column="code_start_using_date" jdbcType="VARCHAR" property="codeStartUsingDate" />
+		<result column="code_last_using_date" jdbcType="VARCHAR" property="codeLastUsingDate" />
+		<result column="voucher_used_total" jdbcType="INTEGER" property="voucherUsedTotal" />
+		<result column="code_pending" jdbcType="BOOLEAN" property="codePending" />
+	</resultMap>
+	
+	<insert id="insertCodeUser">
+		insert into tblcodeuser
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="codeType!=null">
+				code_type,
+			</if>
+			<if test="codeId!=null">
+				"code_id",
+			</if>
+			<if test="userId!=null">
+				user_id,
+			</if>
+			<if test="codeStartUsingDate!=null">
+				code_start_using_date,
+			</if>
+			<if test="codeLastUsingDate!=null">
+				code_last_using_date,
+			</if>
+			<if test="voucherUsedTotal!=null">
+				voucher_used_total,
+			</if>
+			<if test="codePending!=null">
+				code_pending,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="codeType!=null">
+				#{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="codeId!=null">
+				#{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="userId!=null">
+				#{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="codeStartUsingDate!=null">
+				#{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="codeLastUsingDate!=null">
+				#{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherUsedTotal!=null">
+				#{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="codePending!=null">
+				#{codeType, jdbcType=BOOLEAN},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateCodeUser">
+		update tblcodeuser
+		<set>
+			<if test="codeType!=null">
+				code_type = #{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="codeId!=null">
+				"code_id" = #{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="userId!=null">
+				user_id = #{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="codeStartUsingDate!=null">
+				code_start_using_date = #{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="codeLastUsingDate!=null">
+				code_last_using_date = #{codeType, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherUsedTotal!=null">
+				voucher_used_total = #{codeType, jdbcType=INTEGER},
+			</if>
+			<if test="codePending!=null">
+				code_pending = #{codeType, jdbcType=BOOLEAN},
+			</if>
+		</set>
+		where code_user_id = #{codeUserId, jdbcType=INTEGER}
+	</update>
+	
+	<delete id="deleteCodeUser">
+		delete * from tblcodeuser where code_user_id = #{codeUserId, jdbcType=INTEGER}
+	</delete>
+	
+	<delete id="deletePendingCode">
+		delete * from tblcodeuser where code_id = #{codeId, jdbcType=INTEGER} and code_pending = 'true' and user_id = #{userId, jdbcType=INTEGER} and code_type = #{codeType, jdbcType=VARCHAR}
+	</delete>
+</mapper>

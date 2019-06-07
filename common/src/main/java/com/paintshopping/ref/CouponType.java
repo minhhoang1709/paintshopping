@@ -1,5 +1,5 @@
 package com.paintshopping.ref;
 
 public enum CouponType {
-	INVITE, DISCOUNT;
+	CART,CATEGORY, PRODUCT ;
 }

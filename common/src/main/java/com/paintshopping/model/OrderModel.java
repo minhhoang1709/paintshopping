@@ -1,37 +1,35 @@
 package com.paintshopping.model;
 
-import java.util.List;
-
 import com.paintshopping.ref.OrderStatus;
 
 public class OrderModel {
 	
 	private int orderId;
 	private int orderUserId;
-	private String userFullname;
-	private List<CartModel> orderCart;
+	private UserModel orderUser;
+	private int orderCartId;
 	private String orderCreatedDate;
 	private int orderTotal;
-	private String orderPhone;
-	private String orderAddress;
 	private OrderStatus orderStatus;
+	private int orderVoucherId;
+	private VoucherModel orderVoucher;
+
+	public OrderModel(int orderId, int orderUserId, UserModel orderUser, int orderCartId,
+			String orderCreatedDate, int orderTotal, OrderStatus orderStatus, int orderVoucherId,
+			VoucherModel orderVoucher) {
+		this.orderId = orderId;
+		this.orderUserId = orderUserId;
+		this.orderUser = orderUser;
+		this.orderCartId = orderCartId;
+		this.orderCreatedDate = orderCreatedDate;
+		this.orderTotal = orderTotal;
+		this.orderStatus = orderStatus;
+		this.orderVoucherId = orderVoucherId;
+		this.orderVoucher = orderVoucher;
+	}
 
 	public OrderModel() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public OrderModel(int orderId, int orderUserId, String userFullname, List<CartModel> orderCart,
-			String orderCreatedDate, int orderTotal, String orderPhone, String orderAddress, OrderStatus orderStatus) {
-		super();
-		this.orderId = orderId;
-		this.orderUserId = orderUserId;
-		this.userFullname = userFullname;
-		this.orderCart = orderCart;
-		this.orderCreatedDate = orderCreatedDate;
-		this.orderTotal = orderTotal;
-		this.orderPhone = orderPhone;
-		this.orderAddress = orderAddress;
-		this.orderStatus = orderStatus;
 	}
 
 	public int getOrderId() {
@@ -50,20 +48,20 @@ public class OrderModel {
 		this.orderUserId = orderUserId;
 	}
 
-	public String getUserFullname() {
-		return userFullname;
+	public UserModel getOrderUser() {
+		return orderUser;
 	}
 
-	public void setUserFullname(String userFullname) {
-		this.userFullname = userFullname;
+	public void setOrderUser(UserModel orderUser) {
+		this.orderUser = orderUser;
 	}
 
-	public List<CartModel> getOrderCart() {
-		return orderCart;
+	public int getOrderCartId() {
+		return orderCartId;
 	}
 
-	public void setOrderCart(List<CartModel> orderCart) {
-		this.orderCart = orderCart;
+	public void setOrderCartId(int orderCartId) {
+		this.orderCartId = orderCartId;
 	}
 
 	public String getOrderCreatedDate() {
@@ -82,27 +80,27 @@ public class OrderModel {
 		this.orderTotal = orderTotal;
 	}
 
-	public String getOrderPhone() {
-		return orderPhone;
-	}
-
-	public void setOrderPhone(String orderPhone) {
-		this.orderPhone = orderPhone;
-	}
-
-	public String getOrderAddress() {
-		return orderAddress;
-	}
-
-	public void setOrderAddress(String orderAddress) {
-		this.orderAddress = orderAddress;
-	}
-
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
 
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	public int getOrderVoucherId() {
+		return orderVoucherId;
+	}
+
+	public void setOrderVoucherId(int orderVoucherId) {
+		this.orderVoucherId = orderVoucherId;
+	}
+
+	public VoucherModel getOrderVoucher() {
+		return orderVoucher;
+	}
+
+	public void setOrderVoucher(VoucherModel orderVoucher) {
+		this.orderVoucher = orderVoucher;
 	}
 }

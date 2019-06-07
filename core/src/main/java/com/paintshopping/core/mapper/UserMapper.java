@@ -36,7 +36,7 @@ public interface UserMapper {
 	
 	@Insert({
 		"insert ",
-		"into tbluser(user_name, user_pass, user_created_date, user_updated_date) ",
+		"into tbluser(user_name, user_pass) ",
 		"values(#{userName},#{userPass})"
 	})
 	int registerUser(@Param("userName") String userName, @Param("userPass") String userPass);

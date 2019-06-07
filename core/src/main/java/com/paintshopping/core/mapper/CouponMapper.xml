@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paintshopping.core.mapper.CouponMapper">
+	<resultMap type="com.paintshopping.model.CouponModel" id="CouponResultMap">
+		<id column="coupon_id" jdbcType="INTEGER" property="couponId" />
+		<result column="coupon_code" jdbcType="VARCHAR" property="couponCode" />
+		<result column="coupon_title" jdbcType="VARCHAR" property="couponTitle" />
+		<result column="coupon_description" jdbcType="VARCHAR" property="couponDescription" />
+		<result column="coupon_type" jdbcType="VARCHAR" property="couponType" />
+		<result column="coupon_type_id" jdbcType="INTEGER" property="couponTypeId" />
+		<result column="coupon_discount_percent" jdbcType="REAL" property="couponDiscountPercent" />
+		<result column="coupon_minimum" jdbcType="INTEGER" property="couponMinimum" />
+		<result column="coupon_amount" jdbcType="SMALLINT" property="couponAmount" />
+		<result column="coupon_started_date" jdbcType="VARCHAR" property="couponStartedDate" />
+		<result column="coupon_expired_date" jdbcType="VARCHAR" property="couponExpiredDate" />
+		<result column="coupon_limit_per_user" jdbcType="SMALLINT" property="couponLimitPerUser" />
+		<result column="coupon_status" jdbcType="VARCHAR" property="couponStatus" />
+	</resultMap>
+	
+	<insert id="insertCoupon">
+		insert into tblcoupon
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="couponCode!=null">
+				coupon_code,
+			</if>
+			<if test="couponTitle!=null">
+				coupon_title,
+			</if>
+			<if test="couponDescription!=null">
+				coupon_description,
+			</if>
+			<if test="couponType!=null">
+				coupon_type,
+			</if>
+			<if test="couponTypeId!=null">
+				coupon_type_id,
+			</if>
+			<if test="couponDiscountPercent!=null">
+				coupon_discount_percent,
+			</if>
+			<if test="couponMinimum!=null">
+				coupon_minimum,
+			</if>
+			<if test="couponAmount!=null">
+				coupon_amount,
+			</if>
+			<if test="couponStartedDate!=null">
+				coupon_started_date,
+			</if>
+			<if test="couponExpiredDate!=null">
+				coupon_expired_date,
+			</if>
+			<if test="couponLimitPerUser!=null">
+				coupon_limit_per_user,
+			</if>
+			<if test="couponStatus!=null">
+				coupon_status,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="couponCode!=null">
+				#{couponCode, jdbcType=VARCHAR},
+			</if>
+			<if test="couponTitle!=null">
+				#{couponTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="couponDescription!=null">
+				#{couponDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="couponType!=null">
+				#{couponType, jdbcType=VARCHAR},
+			</if>
+			<if test="couponTypeId!=null">
+				#{couponTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="couponDiscountPercent!=null">
+				#{couponDiscountPercent, jdbcType=REAL},
+			</if>
+			<if test="couponMinimum!=null">
+				#{couponMinimum, jdbcType=INTEGER},
+			</if>
+			<if test="couponAmount!=null">
+				#{couponAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="couponStartedDate!=null">
+				#{couponStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="couponExpiredDate!=null">
+				#{couponExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="couponLimitPerUser!=null">
+				#{couponLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="couponStatus!=null">
+				#{couponStatus, jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateCoupon">
+		update tblcoupon
+		<set>
+			<if test="couponCode!=null">
+				coupon_code = #{couponCode, jdbcType=VARCHAR},
+			</if>
+			<if test="couponTitle!=null">
+				coupon_title = #{couponTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="couponDescription!=null">
+				coupon_description = #{couponDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="couponType!=null">
+				coupon_type = #{couponType, jdbcType=VARCHAR},
+			</if>
+			<if test="couponTypeId!=null">
+				coupon_type_id = #{couponTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="couponDiscountPercent!=null">
+				coupon_discount_percent = #{couponDiscountPercent, jdbcType=REAL},
+			</if>
+			<if test="couponMinimum!=null">
+				coupon_minimum = #{couponMinimum, jdbcType=INTEGER},
+			</if>
+			<if test="couponAmount!=null">
+				coupon_amount = #{couponAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="couponStartedDate!=null">
+				coupon_started_date = #{couponStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="couponExpiredDate!=null">
+				coupon_expired_date = #{couponExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="couponLimitPerUser!=null">
+				coupon_limit_per_user = #{couponLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="couponStatus!=null">
+				coupon_status = #{couponStatus, jdbcType=VARCHAR},
+			</if>
+		</set>
+		where coupon_id = #{couponId, jdbcType=INTEGER}
+	</update>
+	
+	<delete id="deleteCoupon">
+		delete * from tblcoupon where coupon_id = #{couponId, jdbcType=INTEGER}
+	</delete>
+</mapper>

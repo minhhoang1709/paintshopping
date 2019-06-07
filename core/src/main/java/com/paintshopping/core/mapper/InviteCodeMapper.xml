@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paintshopping.core.mapper.InviteCodeMapper">
+	<resultMap type="com.paintshopping.model.InviteCodeModel" id="InviteCodeResultMap">
+		<id column="invite_id" jdbcType="INTEGER" property="inviteId" />
+		<result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+		<result column="invite_title" jdbcType="VARCHAR" property="inviteTitle" />
+		<result column="invite_description" jdbcType="VARCHAR" property="inviteDescription" />
+		<result column="invite_type" jdbcType="VARCHAR" property="inviteType" />
+		<result column="invite_product_id" jdbcType="INTEGER" property="inviteProductId" />
+		<result column="invite_user_id" jdbcType="INTEGER" property="inviteUserId" />
+		<result column="invite_amount" jdbcType="SMALLINT" property="inviteAmount" />
+		<result column="invite_started_date" jdbcType="VARCHAR" property="inviteStartedDate" />
+		<result column="invite_expired_date" jdbcType="VARCHAR" property="inviteExpiredDate" />
+		<result column="invite_limit_per_user" jdbcType="VARCHAR" property="inviteLimitPerUser" />
+		<result column="invite_status" jdbcType="VARCHAR" property="inviteStatus" />
+	</resultMap>
+	
+	<insert id="insertInvite">
+		insert into tblinvitecode
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="inviteCode!=null">
+				invite_code,
+			</if>
+			<if test="inviteTitle!=null">
+				invite_title,
+			</if>
+			<if test="inviteDescription!=null">
+				invite_description,
+			</if>
+			<if test="inviteType!=null">
+				invite_type,
+			</if>
+			<if test="inviteProductId!=null">
+				invite_product_id,
+			</if>
+			<if test="inviteUserId!=null">
+				invite_user_id,
+			</if>
+			<if test="inviteAmount!=null">
+				coupon_amount,
+			</if>
+			<if test="inviteStartedDate!=null">
+				invite_started_date,
+			</if>
+			<if test="inviteExpiredDate!=null">
+				invite_expired_date,
+			</if>
+			<if test="inviteLimitPerUser!=null">
+				coupon_limit_per_user,
+			</if>
+			<if test="inviteStatus!=null">
+				invite_status,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="inviteCode!=null">
+				#{inviteCode, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteTitle!=null">
+				#{inviteTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteDescription!=null">
+				#{inviteDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteType!=null">
+				#{inviteType, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteProductId!=null">
+				#{inviteProductId, jdbcType=INTEGER},
+			</if>
+			<if test="inviteUserId!=null">
+				#{inviteUserId, jdbcType=INTEGER},
+			</if>
+			<if test="inviteAmount!=null">
+				#{inviteAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="inviteStartedDate!=null">
+				#{inviteStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteExpiredDate!=null">
+				#{inviteExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteLimitPerUser!=null">
+				#{inviteLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="inviteStatus!=null">
+				#{inviteStatus, jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateInvite">
+		update tblinvitecode
+		<set>
+			<if test="inviteCode!=null">
+				invite_code = #{inviteCode, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteTitle!=null">
+				invite_title = #{inviteTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteDescription!=null">
+				invite_description = #{inviteDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteType!=null">
+				invite_type = #{inviteType, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteProductId!=null">
+				invite_product_id = #{inviteProductId, jdbcType=INTEGER},
+			</if>
+			<if test="inviteUserId!=null">
+				invite_user_id = #{inviteUserId, jdbcType=INTEGER},
+			</if>
+			<if test="inviteAmount!=null">
+				invite_amount = #{inviteAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="inviteStartedDate!=null">
+				invite_started_date = #{inviteStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteExpiredDate!=null">
+				invite_expired_date = #{inviteExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="inviteLimitPerUser!=null">
+				invite_limit_per_user = #{inviteLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="inviteStatus!=null">
+				invite_status = #{inviteStatus, jdbcType=VARCHAR},
+			</if>
+		</set>
+		where invite_id = #{inviteId, jdbcType=INTEGER}
+	</update>
+	
+	<delete id="deleteInvite">
+		delete * from tblinvitecode where invite_id = #{inviteId, jdbcType=INTEGER}
+	</delete>
+</mapper>

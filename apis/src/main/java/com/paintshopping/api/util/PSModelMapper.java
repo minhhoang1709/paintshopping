@@ -26,4 +26,9 @@ public class PSModelMapper {
 		PaintCategoryDto paintCategoryDto = modelMapper.map(paintCategoryModel, PaintCategoryDto.class);
 		return paintCategoryDto;
 	}
+	
+	public CartDto convertToDto(CartModel cartModel) {
+		CartDto cartDto = modelMapper.map(cartModel, CartDto.class);
+		return cartDto;
+	}
 }

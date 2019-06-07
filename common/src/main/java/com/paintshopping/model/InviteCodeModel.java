@@ -5,6 +5,7 @@ import com.paintshopping.ref.InviteCodeType;
 
 public class InviteCodeModel {
 	private int inviteId;
+	private String inviteCode;
 	private String inviteTitle;
 	private String inviteDescription;
 	private InviteCodeType inviteType;
@@ -20,11 +21,11 @@ public class InviteCodeModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public InviteCodeModel(int inviteId, String inviteTitle, String inviteDescription, InviteCodeType inviteType, int inviteProductId,
+	public InviteCodeModel(int inviteId,String inviteCode, String inviteTitle, String inviteDescription, InviteCodeType inviteType, int inviteProductId,
 			int inviteUserId, byte inviteAmount, String inviteStartedDate, String inviteExpiredDate,
 			byte inviteLimitPerUser, CodeStatus inviteStatus) {
-		super();
 		this.inviteId = inviteId;
+		this.inviteCode = inviteCode;
 		this.inviteTitle = inviteTitle;
 		this.inviteDescription = inviteDescription;
 		this.inviteType = inviteType;
@@ -43,6 +44,14 @@ public class InviteCodeModel {
 
 	public void setInviteId(int inviteId) {
 		this.inviteId = inviteId;
+	}
+
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
 	}
 
 	public String getInviteTitle() {

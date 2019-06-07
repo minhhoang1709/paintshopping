@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paintshopping.core.mapper.VoucherMapper">
+	<resultMap type="com.paintshopping.model.VoucherModel" id="VoucherResultMap">
+		<id column="voucher_id" jdbcType="INTEGER" property="voucherId" />
+		<result column="voucher_code" jdbcType="VARCHAR" property="voucherCode" />
+		<result column="voucher_title" jdbcType="VARCHAR" property="voucherTitle" />
+		<result column="voucher_description" jdbcType="VARCHAR" property="voucherDescription" />
+		<result column="voucher_type" jdbcType="VARCHAR" property="voucherType" />
+		<result column="voucher_type_id" jdbcType="INTEGER" property="voucherTypeId" />
+		<result column="voucher_total" jdbcType="INTEGER" property="voucherTotal" />
+		<result column="voucher_amount" jdbcType="SMALLINT" property="voucherAmount" />
+		<result column="voucher_started_date" jdbcType="VARCHAR" property="voucherStartedDate" />
+		<result column="voucher_expired_date" jdbcType="VARCHAR" property="voucherExpiredDate" />
+		<result column="voucher_limit_per_user" jdbcType="SMALLINT" property="voucherLimitPerUser" />
+		<result column="voucher_status" jdbcType="VARCHAR" property="voucherStatus" />
+	</resultMap>
+	<insert id="insertVoucher">
+		insert into tblvoucher
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="voucherCode!=null">
+				voucher_code,
+			</if>
+			<if test="voucherTitle!=null">
+				voucher_title,
+			</if>
+			<if test="voucherDescription!=null">
+				voucher_description,
+			</if>
+			<if test="voucherType!=null">
+				voucher_type,
+			</if>
+			<if test="voucherTypeId!=null">
+				voucher_type_id,
+			</if>
+			<if test="voucherTotal!=null">
+				voucher_total,
+			</if>
+			<if test="voucherAmount!=null">
+				voucher_amount,
+			</if>
+			<if test="voucherStartedDate!=null">
+				voucher_started_date,
+			</if>
+			<if test="voucherExpiredDate!=null">
+				voucher_expired_date,
+			</if>
+			<if test="voucherLimitPerUser!=null">
+				voucher_limit_per_user,
+			</if>
+			<if test="voucherStatus!=null">
+				voucher_status,
+			</if>		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="voucherCode!=null">
+				#{voucherCode, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherTitle!=null">
+				#{voucherTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherDescription!=null">
+				#{voucherDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherType!=null">
+				#{voucherType, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherTypeId!=null">
+				#{voucherTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="voucherTotal!=null">
+				#{voucherTotal, jdbcType=INTEGER},
+			</if>
+			<if test="voucherAmount!=null">
+				#{voucherAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="voucherStartedDate!=null">
+				#{voucherStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherExpiredDate!=null">
+				#{voucherExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherLimitPerUser!=null">
+				#{voucherLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="voucherStatus!=null">
+				#{voucherStatus, jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateVoucher">
+		update tblvoucher
+		<set>
+			<if test="voucherCode!=null">
+				voucher_code = #{voucherCode, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherTitle!=null">
+				voucher_title = #{voucherTitle, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherDescription!=null">
+				voucher_description = #{voucherDescription, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherType!=null">
+				voucher_type = #{voucherType, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherTypeId!=null">
+				voucher_type_id = #{voucherTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="voucherTotal!=null">
+				voucher_total = #{voucherTotal, jdbcType=INTEGER},
+			</if>
+			<if test="voucherAmount!=null">
+				voucher_amount = #{voucherAmount, jdbcType=SMALLINT},
+			</if>
+			<if test="voucherStartedDate!=null">
+				voucher_started_date = #{voucherStartedDate, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherExpiredDate!=null">
+				voucher_expired_date = #{voucherExpiredDate, jdbcType=VARCHAR},
+			</if>
+			<if test="voucherLimitPerUser!=null">
+				voucher_limit_per_user = #{voucherLimitPerUser, jdbcType=SMALLINT},
+			</if>
+			<if test="voucherStatus!=null">
+				voucher_status = #{voucherStatus, jdbcType=VARCHAR},
+			</if>
+		</set>
+		where voucher_id = #{voucherId, jdbcType=INTEGER}
+	</update>
+	
+	<delete id="deleteVoucher">
+		delete * from tblvoucher where voucher_id = #{voucherId, jdbcType=INTEGER}
+	</delete>
+</mapper>
