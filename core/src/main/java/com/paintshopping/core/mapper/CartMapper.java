@@ -39,14 +39,18 @@ public interface CartMapper {
 	int getPendingCartId(@Param("cartUserId") int cartUserId);
 	
 	
-	CartModel selectCartByUserId(int cartUserModel);
+	CartModel selectCartByUserId(int cartUserId);
+	
+	CartModel selectCartById(int cartId);
+	
+	
 	
 	@Update({
 		"update tblcart",
 		"set cart_status = 'ORDERED'",
 		"where cart_id = #{cartId, jdbcType=INTEGER}"
 	})
-	int updateCartStatus(@Param("cartId") int cartId);
+	int updateCartStatusById(@Param("cartId") int cartId);
 	
 	@Update({
 		"update tblcart",

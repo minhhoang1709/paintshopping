@@ -92,6 +92,14 @@
 		where a.cart_user_id = #{cartUserId, jdbcType=INTEGER} and a.cart_status = 'PENDING'
 	</select>
 	
+	<select id="selectCartById" resultMap="CartResultMap">
+		select
+			<include refid="CartColumnList" />
+		from
+			<include refid="CartJoinTable" />
+		where a.cart_id = #{cartId, jdbcType=INTEGER}
+	</select>
+	
 	<!-- 
 	<select id="getPendingCartId">
 		select cart_id from tblcart where cart_user_id = #{cartUserId, jdbcType=INTEGER}

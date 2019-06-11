@@ -55,7 +55,7 @@
 		<include refid="OrderColumnList" />
 		from
 		<include refid="OrderJoinList" />
-		where a.order_cart_id = #{orderCartId, jdbcType=INTEGER}
+		where a.order_id = #{orderId, jdbcType=INTEGER}
 	</select>
 	
 	<insert id="insertOrder">

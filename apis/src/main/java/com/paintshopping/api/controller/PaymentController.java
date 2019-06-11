@@ -16,7 +16,16 @@ public class PaymentController {
 	
 	@RequestMapping(path = "/order", method={ RequestMethod.GET })
 	@ResponseBody
-	public OrderDto showOrder(int orderCartId) {
-		return paymentService.showOrder(orderCartId);
+	public OrderDto showOrder(int orderCartId, int orderUserId) {
+		int orderId = paymentService.getOrderId(orderCartId, orderUserId);
+		return paymentService.showOrder(orderId);
+	}
+	
+	@RequestMapping(path = "/order", method={ RequestMethod.PUT })
+	@ResponseBody
+	public int order(int orderCartId, int orderUserId) {
+		int orderId = paymentService.getOrderId(orderCartId, orderUserId);
+		paymentService.updateCartStatus(orderCartId);
+		return paymentService.order(orderId);
 	}
 }

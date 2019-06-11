@@ -42,8 +42,8 @@ public class CartService {
 		return cartMapper.deleteCart(cartId);
 	}
 	
-	public int updateCartStatus(int cartId) {
-		return cartMapper.updateCartStatus(cartId);
+	public int updateCartStatusById(int cartId) {
+		return cartMapper.updateCartStatusById(cartId);
 	}
 	
 	public int updateCartStatusByUserId(int cartUserId) {
@@ -68,5 +68,9 @@ public class CartService {
 	
 	public int selectCouponIdByCartId(int cartId) {
 		return cartMapper.selectCouponIdByCartId(cartId);
+	}
+	
+	public CartModel selectCartById(int cartId) {
+		return cartMapper.selectCartById(cartId);
 	}
 }

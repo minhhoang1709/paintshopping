@@ -23,8 +23,8 @@ public class OrderService {
 		return orderMapper.deleteOrder(orderId);
 	}
 	
-	public OrderModel selectOrder(int orderCartId) {
-		return orderMapper.selectOrder(orderCartId);
+	public OrderModel selectOrder(int orderId) {
+		return orderMapper.selectOrder(orderId);
 	}
 	
 	public int countUsedVoucher(int orderVoucherId) {
@@ -37,5 +37,33 @@ public class OrderService {
 	
 	public OrderModel selectByUserId(int orderUserId) {
 		return orderMapper.selectByUserId(orderUserId);
+	}
+	
+	public int checkPendingOrder(int orderUserId) {
+		return orderMapper.checkPendingOrder(orderUserId);
+	}
+	
+	public OrderModel selectPendingOrderByCartId(int orderCartId, int orderUserId) {
+		return orderMapper.selectPendingOrderByCartId(orderCartId, orderUserId);
+	}
+	
+	public int checkPendingOrderByCartId(int orderCartId, int orderUserId) {
+		return orderMapper.checkPendingOrderByCartId(orderCartId, orderUserId);
+	}
+	
+	public int deleteAllPendingOrder(int orderUserId) {
+		return orderMapper.deleteAllPendingOrder(orderUserId);
+	}
+	
+	public int setDeleveringOrder(int orderId) {
+		return orderMapper.setDeleveringOrder(orderId);
+	}
+	
+	public int setCompletedOrder(int orderId) {
+		return orderMapper.setCompletedOrder(orderId);
+	}
+	
+	public int cancelOrder(int orderId) {
+		return orderMapper.cancelOrder(orderId);
 	}
 }

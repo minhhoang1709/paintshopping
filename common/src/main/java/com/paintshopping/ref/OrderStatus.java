@@ -1,5 +1,5 @@
 package com.paintshopping.ref;
 
 public enum OrderStatus {
-	COMPLETED, CANCELED, PENDING;
+	COMPLETED, CANCELED, PENDING, DELIVERING;
 }
