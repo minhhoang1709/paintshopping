@@ -42,22 +42,22 @@
 				#{codeType, jdbcType=VARCHAR},
 			</if>
 			<if test="codeId!=null">
-				#{codeType, jdbcType=INTEGER},
+				#{codeId, jdbcType=INTEGER},
 			</if>
 			<if test="userId!=null">
-				#{codeType, jdbcType=INTEGER},
+				#{userId, jdbcType=INTEGER},
 			</if>
 			<if test="codeStartUsingDate!=null">
-				#{codeType, jdbcType=VARCHAR},
+				#{codeStartUsingDate, jdbcType=VARCHAR},
 			</if>
 			<if test="codeLastUsingDate!=null">
-				#{codeType, jdbcType=VARCHAR},
+				#{codeLastUsingDate, jdbcType=VARCHAR},
 			</if>
 			<if test="voucherUsedTotal!=null">
-				#{codeType, jdbcType=INTEGER},
+				#{voucherUsedTotal, jdbcType=INTEGER},
 			</if>
 			<if test="codePending!=null">
-				#{codeType, jdbcType=BOOLEAN},
+				#{codePending, jdbcType=BOOLEAN},
 			</if>
 		</trim>
 	</insert>
@@ -69,22 +69,22 @@
 				code_type = #{codeType, jdbcType=VARCHAR},
 			</if>
 			<if test="codeId!=null">
-				"code_id" = #{codeType, jdbcType=INTEGER},
+				"code_id" = #{codeId, jdbcType=INTEGER},
 			</if>
 			<if test="userId!=null">
-				user_id = #{codeType, jdbcType=INTEGER},
+				user_id = #{userId, jdbcType=INTEGER},
 			</if>
 			<if test="codeStartUsingDate!=null">
-				code_start_using_date = #{codeType, jdbcType=VARCHAR},
+				code_start_using_date = #{codeStartUsingDate, jdbcType=VARCHAR},
 			</if>
 			<if test="codeLastUsingDate!=null">
-				code_last_using_date = #{codeType, jdbcType=VARCHAR},
+				code_last_using_date = #{codeLastUsingDate, jdbcType=VARCHAR},
 			</if>
 			<if test="voucherUsedTotal!=null">
-				voucher_used_total = #{codeType, jdbcType=INTEGER},
+				voucher_used_total = #{voucherUsedTotal, jdbcType=INTEGER},
 			</if>
 			<if test="codePending!=null">
-				code_pending = #{codeType, jdbcType=BOOLEAN},
+				code_pending = #{codePending, jdbcType=BOOLEAN},
 			</if>
 		</set>
 		where code_user_id = #{codeUserId, jdbcType=INTEGER}

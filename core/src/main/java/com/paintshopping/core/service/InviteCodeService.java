@@ -31,4 +31,8 @@ public class InviteCodeService {
 	public InviteCodeModel selectInviteCodeByCode(String inviteCode) {
 		return inviteCodeMapper.selectInviteCodeByCode(inviteCode);
 	}
+	
+	public int checkActiveInviteCode(String inviteCode) {
+		return inviteCodeMapper.checkActiveInviteCode(inviteCode);
+	}
 }

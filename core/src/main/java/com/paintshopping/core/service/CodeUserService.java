@@ -30,4 +30,12 @@ public class CodeUserService {
 	public CodeUserModel selectVoucher(int codeId, int userId) {
 		return codeUserMapper.selectVoucher(codeId, userId);
 	}
+	
+	public int checkUsedVoucher(int codeId, int userId) {
+		return codeUserMapper.checkUsedVoucher(codeId, userId);
+	}
+	
+	public int selectVoucherTotal(int codeId, int userId) {
+		return codeUserMapper.selectVoucherTotal(codeId, userId);
+	}
 }

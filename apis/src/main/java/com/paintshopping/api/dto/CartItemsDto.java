@@ -1,14 +1,16 @@
 package com.paintshopping.api.dto;
 
 public class CartItemsDto {
+	private int paintId;
 	private PaintDto cartPaint;
 	private byte cartPaintQuantity;
 	private int cartPaintPrice;
 	private CouponDto cartCoupon;
 	private InviteCodeDto cartinviteCode;
 
-	public CartItemsDto(PaintDto cartPaint, byte cartPaintQuantity, int cartPaintPrice, CouponDto cartCoupon,
+	public CartItemsDto(int paintId, PaintDto cartPaint, byte cartPaintQuantity, int cartPaintPrice, CouponDto cartCoupon,
 			InviteCodeDto cartinviteCode) {
+		this.paintId = paintId;
 		this.cartPaint = cartPaint;
 		this.cartPaintQuantity = cartPaintQuantity;
 		this.cartPaintPrice = cartPaintPrice;
@@ -17,6 +19,14 @@ public class CartItemsDto {
 	}
 
 	public CartItemsDto() {
+	}
+
+	public int getPaintId() {
+		return paintId;
+	}
+
+	public void setPaintId(int paintId) {
+		this.paintId = paintId;
 	}
 
 	public PaintDto getCartPaint() {

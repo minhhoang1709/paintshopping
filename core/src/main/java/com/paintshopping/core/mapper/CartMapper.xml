@@ -97,23 +97,24 @@
 		select cart_id from tblcart where cart_user_id = #{cartUserId, jdbcType=INTEGER}
 	</select>
 	 -->
-	<insert id="insertCart">
+	 
+	 <!-- 
+	<insert id="insertCart" parameterType="com.paintshopping.model.CartModel">
 		insert into tblcart
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="cartUserId!=null">
-				cart_user_id,
+			<if test="cartUserId!=0">
+				cart_user_id
 			</if>
-				cart_created_date,
+				
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="cartUserId!=null">
-				#{cartUserId, jdbcType=INTEGER},
+			<if test="cartUserId!=0">
+				#{cartUserId, jdbcType=INTEGER}
 			</if>
-				now(),
 		</trim>
 	</insert>
-	
-	<!--
+	 -->
+	 <!-- 
 	<update id="updateCart">
 		update tblcart
 		<set>
@@ -123,8 +124,7 @@
 		</set>
 		where cart_id = #{cartId, jdbcType=INTEGER}
 	</update>
-	-->
-	
+	 -->
 	<delete id="deleteCart">
 		delete * from tblcart where cart_id = #{cartId, jdbcType=INTEGER} and cart_status = 'ORDERED'
 	</delete>

@@ -25,4 +25,20 @@ public class BuyingController {
 	public CartDto getCartByUserId(int cartUserId) {
 		return buyingService.getCartByUserId(cartUserId);
 	}
+	
+	@RequestMapping(path = "/cartitems", method = {RequestMethod.POST})
+	@ResponseBody
+	public int addToCart(int cartItemsPaintId,byte cartItemsPaintQuantity, int cartUserId) {
+		return buyingService.addToCart(cartItemsPaintId, cartItemsPaintQuantity, cartUserId);
+	}
+	
+	@RequestMapping(path="/cartitems", method = {RequestMethod.DELETE})
+	@ResponseBody
+	public int removeFromCart(int cartItemsPaintId, int cartUserId) {
+		return buyingService.removeFromCart(cartItemsPaintId, cartUserId);
+	}
+	
+
+	
+
 }

@@ -23,5 +23,17 @@ public interface CouponMapper {
 	@Select({
 		"select * from tblcoupon where coupon_code = #{couponCode, jdbcType = VARCHAR}"
 	})
-	CouponModel selectCouponByCode(@Param("couponcode") String couponCode);
+	CouponModel selectCouponByCode(@Param("couponCode") String couponCode);
+	
+	@Select({
+		"select coupon_discount_percent from tblcoupon where coupon_id = #{couponId, jdbcType = INTEGER}"
+	})
+	float selectCouponDiscountPercentByCouponId(@Param("couponId") int couponId);
+	
+	@Select({
+		"select count(*) from tblcoupon where coupon_code = #{couponCode, jdbcType=VARCHAR} and coupon_status = 'ACTIVE'"
+	})
+	int checkInvalidCoupon(@Param("couponCode") String couponCode);
+	
+	
 }

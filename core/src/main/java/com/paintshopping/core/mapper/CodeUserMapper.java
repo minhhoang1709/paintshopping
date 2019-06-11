@@ -22,11 +22,20 @@ public interface CodeUserMapper {
 
 	@Select({
 		"select * from tblcodeuser",
-		"where code_id = #{codeId, jdbcType=INTEGER} and code_type = VOUCHER and user_id = #{userId, jdbcType=VARCHAR}"
+		"where code_id = #{codeId, jdbcType=INTEGER} and code_type = 'VOUCHER' and user_id = #{userId, jdbcType=VARCHAR}"
 	})
 	CodeUserModel selectVoucher(@Param("codeId") int codeId, @Param("userId") int userId);
 	
+	@Select({
+		"select count(*) from tblcodeuser",
+		"where code_id = #{codeId, jdbcType=INTEGER} and code_type = 'VOUCHER' and user_id = #{userId, jdbcType=VARCHAR}"
+	})
+	int checkUsedVoucher(@Param("codeId") int codeId, @Param("userId") int userId);
 	
-	
+	@Select({
+		"select voucher_used_total from tblcodeuser",
+		"where code_id = #{codeId, jdbcType=INTEGER} and code_type = 'VOUCHER' and user_id = #{userId, jdbcType=VARCHAR}"
+	})
+	int selectVoucherTotal(@Param("codeId") int codeId, @Param("userId") int userId);
 	
 }

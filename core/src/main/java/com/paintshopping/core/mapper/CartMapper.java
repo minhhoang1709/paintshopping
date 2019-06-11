@@ -1,5 +1,6 @@
 package com.paintshopping.core.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -10,7 +11,11 @@ import com.paintshopping.model.CartModel;
 @Mapper
 public interface CartMapper {
 	
-	int insertCart(int cartUserId);
+	@Insert({
+		"insert into tblcart(cart_user_id, cart_created_date, cart_status) values(#{cartUserId, jdbcType=INTEGER}, #{cartCreatedDate, jdbcType=VARCHAR}, 'PENDING')"
+	})
+	int insertCart(@Param("cartUserId") int cartUserId, @Param("cartCreatedDate") String cartCreatedDate);
+	
 	
 	@Update({
 		"update tblcart",
@@ -43,6 +48,13 @@ public interface CartMapper {
 	})
 	int updateCartStatus(@Param("cartId") int cartId);
 	
+	@Update({
+		"update tblcart",
+		"set cart_status = 'ORDERED'",
+		"where cart_user_id = #{cartUserId, jdbcType=INTEGER}"
+	})
+	int updateCartStatusByUserId(@Param("cartUserId") int cartUserId);
+	
 	@Select({
 		"select count(*) from tblcart",
 		"where cart_coupon_id =#{cartCouponId, jdbcType=INTEGER}"
@@ -68,5 +80,9 @@ public interface CartMapper {
 	})
 	int countUsedVoucherByUserId(@Param("cartVoucherId") int cartVoucherId, @Param("cartUserId") int cartUserId);
 	
-	
+	@Select({
+		"select cart_coupon_id from tblcart",
+		"where cart_id = #{cartId, jdbcType=INTEGER}"
+	})
+	int selectCouponIdByCartId(int cartId);
 }

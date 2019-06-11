@@ -26,4 +26,16 @@ public class OrderService {
 	public OrderModel selectOrder(int orderCartId) {
 		return orderMapper.selectOrder(orderCartId);
 	}
+	
+	public int countUsedVoucher(int orderVoucherId) {
+		return orderMapper.countUsedVoucher(orderVoucherId);
+	}
+	
+	public int countUsedVoucherPerUser(int orderVoucherId, int orderUserId) {
+		return orderMapper.countUsedVoucherPerUser(orderVoucherId, orderUserId);
+	}
+	
+	public OrderModel selectByUserId(int orderUserId) {
+		return orderMapper.selectByUserId(orderUserId);
+	}
 }

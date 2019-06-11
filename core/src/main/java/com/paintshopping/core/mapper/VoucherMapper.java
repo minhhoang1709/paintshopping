@@ -24,4 +24,9 @@ public interface VoucherMapper {
 		"select * from tblvoucher where voucher_code = #{voucherCode, jdbcType=VARCHAR}"
 	})
 	VoucherModel selectVoucherByCode(@Param("voucherCode") String voucherCode);
+	
+	@Select({
+		"select count(*) from tblvoucher where voucher_code = #{voucherCode, jdbcType = VARCHAR} and voucher_status = 'ACTIVE'"
+	})
+	int checkInvalidVoucher(@Param("voucherCode") String voucherCode);
 }

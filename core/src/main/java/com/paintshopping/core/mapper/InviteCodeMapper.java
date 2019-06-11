@@ -24,4 +24,10 @@ public interface InviteCodeMapper {
 		"select * from tblinvitecode where invite_code = #{inviteCode, jdbcType = VARCHAR}"
 	})
 	InviteCodeModel selectInviteCodeByCode(@Param("inviteCode") String inviteCode);
+	
+	@Select({
+		"select count(*) from tblinvitecode",
+		"where invite_code = #{inviteCode, jdbcType = VARCHAR} and invite_status ='ACTIVE'"
+	})
+	int checkActiveInviteCode(@Param("inviteCode") String inviteCode);
 }

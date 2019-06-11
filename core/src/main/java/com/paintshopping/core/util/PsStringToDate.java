@@ -7,9 +7,9 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StringToDate {
+public class PsStringToDate {
 	public Date stringToDate(String sDate) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		Date date = new Date();
 		try {
 			
@@ -23,7 +23,7 @@ public class StringToDate {
 	}
 	
 	public String dateToString(Date date) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		String sDate = formatter.format(date);
 		return sDate;
 	}

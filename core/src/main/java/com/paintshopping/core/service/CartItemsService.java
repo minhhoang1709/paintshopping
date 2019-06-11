@@ -21,15 +21,27 @@ public class CartItemsService {
 		return cartItemsMapper.updateCartItem(cartItemsModel);
 	}
 	
-	public int deleteByCartId(int cartId) {
-		return cartItemsMapper.deleteByCartId(cartId);
+	public int deleteByCartId(int cartId, int cartPaintId) {
+		return cartItemsMapper.deleteByCartId(cartId, cartPaintId);
 	}
 	
-	public CartItemsModel selectByPaintId(int cartPaintId) {
-		return cartItemsMapper.selectByPaintId(cartPaintId);
+	public CartItemsModel selectByPaintId(int cartPaintId, int cartId) {
+		return cartItemsMapper.selectByPaintId(cartPaintId, cartId);
+	}
+	
+	public int checkExistPaint(int cartPaintId, int cartId) {
+		return cartItemsMapper.checkExistPaint(cartPaintId, cartId);
 	}
 	
 	public int insertList(List<CartItemsModel> cartItemsList) {
 		return cartItemsMapper.insertList(cartItemsList);
+	}
+	
+	public int countUsedInvite(int inviteId) {
+		return cartItemsMapper.countUsedInvite(inviteId);
+	}
+	
+	public int countUsedInviteByUserId(int inviteId, int userId) {
+		return cartItemsMapper.countUsedInviteByUserId(inviteId, userId);
 	}
 }

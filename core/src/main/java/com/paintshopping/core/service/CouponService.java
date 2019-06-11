@@ -30,4 +30,12 @@ public class CouponService {
 	public CouponModel selectCouponByCode(String couponCode) {
 		return couponMapper.selectCouponByCode(couponCode);
 	}
+	
+	public float selectCouponDiscountPercentByCouponId(int couponId) {
+		return couponMapper.selectCouponDiscountPercentByCouponId(couponId);
+	}
+	
+	public int checkInvalidCouponByCode(String couponCode) {
+		return couponMapper.checkInvalidCoupon(couponCode);
+	}
 }

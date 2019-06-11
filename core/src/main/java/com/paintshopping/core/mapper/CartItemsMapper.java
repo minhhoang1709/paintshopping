@@ -15,9 +15,9 @@ public interface CartItemsMapper {
 	
 	int updateCartItem(CartItemsModel cartItemsModel);
 	
-	int deleteByCartId(int cartId);
+	int deleteByCartId(int cartId, int cartPaintId);
 	
-	CartItemsModel selectByPaintId(int cartPaintId);
+	CartItemsModel selectByPaintId(int cartPaintId, int cartId);
 	
 	int insertList(List<CartItemsModel> cartItemsList);
 	
@@ -37,11 +37,19 @@ public interface CartItemsMapper {
 		"select count(*) from tblcartitems",
 		"where cart_invite_id =#{cartInviteId, jdbcType=INTEGER}"
 	})
-	int countUsedVoucher(@Param("cartInviteId") int cartInviteId);
+	int countUsedInvite(@Param("cartInviteId") int cartInviteId);
 	
 	@Select({
 		"select count(*) from tblcartitems",
 		"where cart_invite_id = #{cartInviteId, jdbcType=INTEGER} and cart_user_id = #{cartUserId, jdbcType=INTEGER}"
 	})
-	int countUsedVoucherByUserId(@Param("cartInviteId") int cartInviteId, @Param("cartUserId") int cartUserId);
-}
+	int countUsedInviteByUserId(@Param("cartInviteId") int cartInviteId, @Param("cartUserId") int cartUserId);
+	
+	@Select({
+		"select count(*) from tblcartitems",
+		"where cart_paint_id = #{cartPaintId, jdbcType=INTEGER} and cart_id = #{cartId, jdbcType=INTEGER}"
+		})
+	int checkExistPaint(@Param("cartPaintId") int cartPaintId, @Param("cartId") int cartId);
+	
+	}
+

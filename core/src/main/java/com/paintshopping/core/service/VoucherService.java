@@ -30,4 +30,8 @@ public class VoucherService {
 	public VoucherModel selectVoucherByCode(String voucherCode) {
 		return voucherMapper.selectVoucherByCode(voucherCode);
 	}
+	
+	public int checkInvalidVoucher(String voucherCode) {
+		return voucherMapper.checkInvalidVoucher(voucherCode);
+	}
 }

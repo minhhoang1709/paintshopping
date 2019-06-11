@@ -58,10 +58,10 @@
 			<include refid="CartItemsColumnList" />
 		from
 			<include refid="CartItemsJoinTable" />
-		where cart_paint_id = #{cartPaintId, jdbcType=INTEGER}
+		where cart_paint_id = #{cartPaintId, jdbcType=INTEGER} and cart_id = #{cartId, jdbcType=INTEGER}
 	</select>
 	
-	<insert id="insertCartItem">
+	<insert id="insertCartItem" parameterType="com.paintshopping.model.CartItemsModel">
 		insert into tblcartitems
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="cartPaintId!=null">
@@ -71,37 +71,37 @@
 				cart_paint_quantity,
 			</if>
 			<if test="cartPaintPrice!=null">
-				cart_user_price,
+				cart_paint_price,
 			</if>
 			<if test="cartId!=null">
 				cart_id,
 			</if>
-			<if test="cartCouponId!=null">
-				cart_coupon_id,
+			<if test="cartItemsCouponId!=null">
+				cart_items_coupon_id,
 			</if>
-			<if test="cartInviteId!=null">
-				cart_invite_id,
+			<if test="cartItemsInviteId!=null">
+				cart_items_invite_id,
 			</if>
-				cart_created_date,
+				cart_items_created_date,
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="cartPaintId!=null">
-				cart_paint_id = #{cartPaintId, jdbcType=INTEGER},
+				#{cartPaintId, jdbcType=INTEGER},
 			</if>
 			<if test="cartPaintQuantity!=null">
-				cart_paint_quantity = #{cartPaintQuantity, jdbcType=SMALLINT},
+				#{cartPaintQuantity, jdbcType=SMALLINT},
 			</if>
 			<if test="cartPaintPrice!=null">
-				cart_user_price = #{cartPaintPrice, jdbcType=INTEGER},
+				#{cartPaintPrice, jdbcType=INTEGER},
 			</if>
 			<if test="cartId!=null">
-				cart_id = #{cartId, jdbcType=INTEGER},
+				#{cartId, jdbcType=INTEGER},
 			</if>
-			<if test="cartCouponId!=null">
-				cart_coupon_id = #{cartCouponId, jdbcType=INTEGER},
+			<if test="cartItemsCouponId!=null">
+				#{cartItemsCouponId, jdbcType=INTEGER},
 			</if>
-			<if test="cartInviteId!=null">
-				cart_invite_id = #{cartInviteId, jdbcType=INTEGER},
+			<if test="cartItemsInviteId!=null">
+				#{cartItemsInviteId, jdbcType=INTEGER},
 			</if>
 				now(),
 		</trim>
@@ -135,6 +135,6 @@
 	</update>
 	
 	<delete id="deleteByCartId">
-		delete * from tblcartitems where cart_id = #{cartId, jdbcType=INTEGER}
+		delete * from tblcartitems where cart_id = #{cartId, jdbcType=INTEGER} and cart__paint_id = #{cartPaintId, jdbcType=INTEGER}
 	</delete>
 </mapper>

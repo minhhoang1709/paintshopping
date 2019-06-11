@@ -31,4 +31,9 @@ public class PSModelMapper {
 		CartDto cartDto = modelMapper.map(cartModel, CartDto.class);
 		return cartDto;
 	}
+	
+	public OrderDto convertToDto(OrderModel orderModel) {
+		OrderDto orderDto = modelMapper.map(orderModel, OrderDto.class);
+		return orderDto;
+	}
 }

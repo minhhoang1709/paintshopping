@@ -12,7 +12,7 @@ public class CartModel {
 	private int cartCouponId;
 	private CouponModel cartCoupon;
 	private CartStatus cartStatus;
-
+	
 	public CartModel(int cartId, int cartUserId, String cartCreatedDate, List<CartItemsModel> cartItems,
 			int cartCouponId, CouponModel cartCoupon, CartStatus cartStatus) {
 		this.cartId = cartId;
@@ -24,8 +24,10 @@ public class CartModel {
 		this.cartStatus = cartStatus;
 	}
 	
+	
 	public CartModel() {
 	}
+
 
 	public int getCartId() {
 		return cartId;
@@ -63,11 +65,9 @@ public class CartModel {
 	public void setCartCoupon(CouponModel cartCoupon) {
 		this.cartCoupon = cartCoupon;
 	}
-
 	public CartStatus getCartStatus() {
 		return cartStatus;
 	}
-
 	public void setCartStatus(CartStatus cartStatus) {
 		this.cartStatus = cartStatus;
 	}

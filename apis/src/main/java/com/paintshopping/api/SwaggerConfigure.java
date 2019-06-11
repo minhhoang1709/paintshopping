@@ -1,5 +1,7 @@
 package com.paintshopping.api;
 
+import java.time.Instant;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -16,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfigure extends WebMvcConfigurationSupport {
 	@Bean
 	public Docket apiDocket() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+		return new Docket(DocumentationType.SWAGGER_2).directModelSubstitute(Instant.class, java.util.Date.class).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.regex("/api.*")).build();
 	}
 

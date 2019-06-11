@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+//import com.paintshopping.api.dto.ItemsDto;
 import com.paintshopping.api.dto.PaintDto;
+import com.paintshopping.api.service.BuyingService;
 import com.paintshopping.api.service.ShoppingService;
 
 @Controller
 @RequestMapping(path = "/api")
 public class ShoppingController {
 	@Autowired ShoppingService shoppingService;
+	@Autowired BuyingService buyingService;
 	
 	@RequestMapping(path = "/paint", method={ RequestMethod.GET })
 	@ResponseBody
@@ -39,5 +42,10 @@ public class ShoppingController {
 	public List<PaintDto> showPaintListByCategoryId(int paintCategoryId) {
 		return shoppingService.getPaintByCategoryId(paintCategoryId);
 	}
-
+	
+//	@RequestMapping(path="/cartitemslist", method = {RequestMethod.POST})
+//	@ResponseBody
+//	public int insertListToCart(List<ItemsDto> cartItemsDtoList, int cartUserId) {
+//		return buyingService.insertList(cartItemsDtoList, cartUserId);
+//	}
 }

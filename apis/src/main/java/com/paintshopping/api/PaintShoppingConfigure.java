@@ -21,7 +21,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 @EnableConfigurationProperties
 @MapperScan("com.paintshopping.core.mapper")
-@ComponentScan({"com.paintshopping.core.service", "com.paintshopping.api.service"})
+@ComponentScan({"com.paintshopping.core.service", "com.paintshopping.api.service", "com.paintshopping.core.util", "com.paintshopping.apis.dto"})
 public class PaintShoppingConfigure extends WebMvcConfigurerAdapter {
 	
 	 @Bean
